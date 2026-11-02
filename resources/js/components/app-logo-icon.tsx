@@ -1,0 +1,14 @@
+import type { SVGAttributes } from 'react';
+
+/** Ember's mark: one check-in square with the streak flame knocked out of it. */
+export default function AppLogoIcon(props: SVGAttributes<SVGElement>) {
+    return (
+        <svg {...props} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M0 0H32V32H0Z M16 5.5C17.4 9.6 22.4 12.3 22.4 18.2C22.4 22.6 19.6 26 16 26C12.4 26 9.6 22.6 9.6 18.2C9.6 14.8 11.5 12.5 12.9 10.9C13.2 13.3 14.1 14.6 15.2 15.3C15.5 11.8 14.8 8.8 16 5.5Z"
+            />
+        </svg>
+    );
+}

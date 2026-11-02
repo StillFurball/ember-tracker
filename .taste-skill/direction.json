@@ -1,0 +1,390 @@
+{
+    "version": 1,
+    "at": "2026-11-01T02:49:26.514Z",
+    "seed": 1872790510,
+    "redraws": 0,
+    "input": {
+        "brief": "Ember: a habit and task tracker where daily check-ins keep a streak flame lit, earn +50 XP, and level you up",
+        "sector": "consumer-app",
+        "tone": "playful",
+        "have": ["product-ui"],
+        "keep": [],
+        "avoid": [],
+        "sections": ["how-it-works", "showcase", "list", "cta", "footer"],
+        "direction": "one-motif"
+    },
+    "imagery": "interface",
+    "allow": [],
+    "direction": {
+        "id": "one-motif",
+        "name": "One motif",
+        "sectors": [
+            "saas",
+            "finance",
+            "consumer-app",
+            "ai-product",
+            "dev-tool",
+            "health",
+            "physical-product",
+            "restaurant",
+            "education",
+            "nonprofit",
+            "other"
+        ],
+        "tones": ["playful", "technical", "warm", "bold"],
+        "needs": [],
+        "idea": "Take one shape from the subject and let it run the whole system. A drilling tool's octagonal cross-section becomes the buttons, the image masks and the loader. A two-account money app becomes two circles that recur as icon, inline dot and section colour. A café's striped awning becomes every band on the page. Look at the product, the logo, the object or the word in the headline and find the simplest geometry in it (a circle, an arc, a chamfer, a stripe, a notch, a ring). Then use only that shape, at three or four very different scales, everywhere a designer would normally reach for a generic rounded rectangle.",
+        "composition": "Hero: the motif appears once at enormous scale as a flat filled shape, cropped by the viewport (a circle 120vh across entering from the right, a chamfered block filling the lower half), with a short headline at 6–8vw and one supporting sentence set on the remaining ground, left-aligned on a shared margin. Through the page the motif returns as: the mask for every photograph (via `clip-path` or `border-radius` made from the same geometry), the shape of the primary button, the bullet beside list items at text size, and one full-width band that separates the two halves of the page. Sections use simple two-column or single-column layouts so the shape is the only thing with character.",
+        "typography": "A clean geometric or grotesk face that echoes the shape (round bowls for circles, squared terminals for chamfers). Medium weight; headings 6–8vw in the hero and 3–4vw after.",
+        "typeClasses": ["geometric", "grotesk-tight", "rounded-friendly"],
+        "colour": "The motif carries the accent colour at large scale, flat. Everything else is ground and ink. A second motif colour is allowed only if the subject has a real pair (two accounts, two modes).",
+        "paletteTags": ["mono-accent", "two-tone", "pastel-fields"],
+        "imagery": "Photographs appear inside the motif's shape. If there is product interface to show, it sits on a flat colour stage shaped by the motif. Draw the shape with CSS or a simple inline SVG path; do not draw illustrations.",
+        "sectionTags": ["colour-field", "object-led", "type-led"],
+        "motion": "shutter-image",
+        "richness": "One shape at many sizes. The giant cropped shape gives the hero mass and colour without a single image.",
+        "pitfalls": "One motif means one. A circle here, a hexagon there and a blob behind is the generated look this replaces. The motif must come from the subject and you must be able to say from where in one clause.",
+        "seenIn": [
+            "aww-sstr-friction-reduction",
+            "opl-tara",
+            "opl-boaxt",
+            "opl-midnight-2",
+            "opl-superlocal-2026",
+            "opl-billow"
+        ],
+        "allow": []
+    },
+    "hero": {
+        "id": "striped-card-beside-room",
+        "name": "Striped card beside the room",
+        "archetype": "split",
+        "directions": ["one-motif", "page-is-the-object", "split-stage"],
+        "needs": [],
+        "blueprint": "The viewport is split 50/50 with a 12px gap and 12px outer margins. The right half is one full-height photograph of the room, corners radiused 16px, `position: sticky` so it stays in view while the left half scrolls. The left half is a printed card: a flat paper-colour panel with the same 16px radius, and the subject's stripe (from its awning, label or ribbon) as the only ornament. Across the card's top runs a band 56px tall made of alternating bars of the single ink colour and paper, each bar 28px wide, built as a flex row of filled blocks. The same stripe returns as an 8px band above the footer and inside the button on hover. Under the band, centred: the wordmark about 300px wide, then a two-line headline in a light serif at clamp(40px, 3.6vw, 56px) in the ink colour, one supporting sentence at 17px held to 36ch, and the single action as a solid rectangular button. Three text links sit in one centred row at 15px, 28px above the card's bottom edge. One ink on paper; the photograph supplies every other colour.",
+        "mobile": "The photograph comes first at full width inside 12px margins, 48svh tall, with the 16px radius. The card follows and overlaps the photograph's bottom edge by 24px using a negative margin. Its striped band is 40px tall; below it the wordmark at 56% width, the headline at 8vw on two lines, the sentence and the button, all centred. The links wrap into the card's foot.",
+        "headline": "A warm two-line welcome of three to six words, up to about 18 characters per line at 3.6vw.",
+        "motion": "slow-crossfade",
+        "seenIn": ["opl-le-petit-bleu", "opl-zara-webb"]
+    },
+    "type": {
+        "id": "stack-sans-light",
+        "name": "Stack Sans Headline / Stack Sans Text",
+        "class": "geometric",
+        "display": {
+            "family": "Stack Sans Headline",
+            "source": "google",
+            "weights": [300],
+            "italic": false,
+            "settings": "weight 300 · tracking -0.022em · leading 1.05 · sentence case; a heading may be two-tone, grey then full ink",
+            "css": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@300&family=Stack+Sans+Text:wght@400;500&display=swap\" rel=\"stylesheet\">"
+        },
+        "text": {
+            "family": "Stack Sans Text",
+            "source": "google",
+            "weights": [400, 500],
+            "italic": false,
+            "settings": "400 for body, 500 for emphasis · leading 1.5 · tracking 0",
+            "css": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@300&family=Stack+Sans+Text:wght@400;500&display=swap\" rel=\"stylesheet\">"
+        },
+        "standsInFor": ["Mluvka", "Roobert"],
+        "note": "A geometric sans in a light weight at large size, soft and exact at once, with its text cut underneath. Suits consumer apps, utilities and developer tools that want to feel calm and modern.",
+        "seenIn": ["opl-screentune", "opl-dialkit", "opl-typewave"],
+        "links": [
+            "https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@300&family=Stack+Sans+Text:wght@400;500&display=swap"
+        ],
+        "scale": {
+            "step-small": "clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)",
+            "step-body": "clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem)",
+            "step-lead": "clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem)",
+            "step-head": "clamp(2rem, 1.3rem + 3.2vw, 4rem)"
+        }
+    },
+    "palette": {
+        "id": "white-link-blue",
+        "name": "Sheet and biro",
+        "tags": ["light-neutral", "mono-accent"],
+        "bg": "#ffffff",
+        "surface": "#f4f4f4",
+        "ink": "#111111",
+        "muted": "#6b6b6b",
+        "accent": "#1a4be0",
+        "accentInk": "#ffffff",
+        "fields": [
+            {
+                "bg": "#111111",
+                "ink": "#ffffff"
+            }
+        ],
+        "note": "White holds the whole page with black type, one grey for secondary lines and a pale grey step for tiles and inputs; the footer may invert to black. Blue is the colour of text links and the one button, and nothing else is tinted.",
+        "seenIn": ["opl-shawn-golden", "opl-lovably", "aww-bleibtgleich26"]
+    },
+    "photos": {
+        "set": "architecture",
+        "title": "Architecture",
+        "note": "structure, lines, bridges, facades and building interiors",
+        "treatment": null,
+        "others": ["water", "sky-and-space"],
+        "photos": [
+            {
+                "id": 500,
+                "alt": "Glass skyscraper tapering into streaked clouds, seen from below",
+                "tone": "mid",
+                "colours": ["steel blue", "pale grey", "white"],
+                "mono": false,
+                "calm": "left",
+                "quality": 4,
+                "ratio": 1.5,
+                "by": "Greg Shield",
+                "page": "https://unsplash.com/photos/JV4Ic7fSZbw"
+            },
+            {
+                "id": 855,
+                "alt": "Small figure walking past a huge bright yellow wall",
+                "tone": "light",
+                "colours": ["bright yellow", "black"],
+                "mono": false,
+                "calm": "left",
+                "quality": 5,
+                "ratio": 1.5,
+                "by": "Rodion Kutsaev",
+                "page": "https://unsplash.com/photos/IJ25m7fXqtk"
+            },
+            {
+                "id": 618,
+                "alt": "Curving glass and steel lattice roof in black and white",
+                "tone": "light",
+                "colours": ["white", "grey", "black"],
+                "mono": true,
+                "calm": "none",
+                "quality": 5,
+                "ratio": 1.5,
+                "by": "Mika Ruusunen",
+                "page": "https://unsplash.com/photos/ypVM8PnygUo"
+            },
+            {
+                "id": 620,
+                "alt": "White arched bridge spanning grey water under a pale sky",
+                "tone": "light",
+                "colours": ["white", "pale grey", "charcoal"],
+                "mono": true,
+                "calm": "bottom",
+                "quality": 5,
+                "ratio": 1.5,
+                "by": "Matthew Wiebe",
+                "page": "https://unsplash.com/photos/HeVd38MWnw4"
+            }
+        ]
+    },
+    "motion": {
+        "id": "slow-crossfade",
+        "name": "Slow crossfade",
+        "description": "The principal photograph quietly changes: three or four images of the same framing crossfade over about 1.6 seconds, holding five to six seconds each, or the fixed image changes when its matching section arrives. It should feel like light shifting in a room. Pause when the tab is hidden; under reduced motion show only the first image."
+    },
+    "sections": [
+        {
+            "id": "how-it-works-drag-through-the-stages",
+            "role": "how-it-works",
+            "name": "Drag through the stages",
+            "shape": "split",
+            "tags": ["ui-led", "colour-field"],
+            "directions": [
+                "split-stage",
+                "product-performs",
+                "colour-chapters",
+                "sentence-as-layout",
+                "dark-room",
+                "one-motif"
+            ],
+            "needs": [],
+            "blueprint": "A 50/50 split, 88svh tall: two flat fields meeting on a clean vertical edge, and one slider that drives both. Left field: the current stage as a clause of three to six words at clamp(40px, 4.6vw, 76px) on two lines, top-left from column 1, starting with its order word; it serves as the heading. Right field: one fragment of the product at true size, about 440px wide, centred, root marked data-ui, in the state that matches the clause. Along the bottom, crossing both fields inside 28px margins, a real range `<input>` with four stops: a solid track 8px tall, the part already passed in full ink, and a square thumb 32px across in the accent. Under the track, four stage names at 16px, the current one in full ink. Dragging, or the arrow keys, swaps the clause and the fragment's state with a 200ms crossfade; nothing depends on scroll.",
+            "mobile": "The fragment's field comes first, 46svh, the fragment at true size and cropped to its active region. The slider follows directly beneath on the seam, thumb 40px. Then the clause field: the clause at 9vw on two lines, with the four stage names under it in a two-by-two block at 15px.",
+            "seenIn": ["opl-textmode-overlay", "opl-vessa", "opl-juggle"]
+        },
+        {
+            "id": "showcase-one-control-blown-up",
+            "role": "showcase",
+            "name": "One control, blown up",
+            "shape": "full-bleed",
+            "tags": ["ui-led", "poster", "colour-field"],
+            "directions": [
+                "loud-flat-poster",
+                "colour-chapters",
+                "one-motif",
+                "borrowed-category",
+                "dark-room",
+                "product-performs"
+            ],
+            "needs": [],
+            "blueprint": "A flat saturated field, full-bleed and 92svh tall, holds one working control from the product: the toggle, slider, segmented switch or record button the whole product turns on. Build it at true proportions with every dimension in em, mark its root data-ui, then raise that root's font-size until the control stands about 46vh tall. Anchor it right of centre so the section's right and bottom edges crop about a fifth of it (overflow: hidden on the section). It keeps its real label and value, now at poster size, and it works: operating it swaps the field between two palette colours and changes one word of the heading. The heading, two to four words at clamp(28px, 2.6vw, 40px), sits top-left on the page margin with one sentence at 17px beneath it. The lower-left third of the field stays empty.",
+            "mobile": "The field is 86svh. Heading and sentence sit top-left at 26px and 16px. The control is enlarged to about 130vw wide and anchored bottom-left, so the right edge crops its far end while its thumb or active segment stays within reach. It still works and still swaps the field colour.",
+            "seenIn": ["opl-textmode-overlay", "opl-uni"]
+        },
+        {
+            "id": "list-cards-fold-into-spines",
+            "role": "list",
+            "name": "Cards that fold into spines",
+            "shape": "pinned",
+            "tags": ["type-led", "colour-field", "dense"],
+            "directions": [
+                "editorial-report",
+                "colour-chapters",
+                "page-is-the-object",
+                "dense-tiles"
+            ],
+            "needs": [],
+            "blueprint": "For a journal, a run of notes or a list of chapters without pictures. A wrapper about 400svh tall holds a sticky stage of 100svh. The heading, two to four words at clamp(48px, 4.2vw, 64px), sits top-left on the 32px margin, 120px from the top. Under it a band 360px tall spans the content width and holds a horizontal deck of text cards, each about 620px wide, in three neighbouring flat tones of one hue taken in turn. On a card, with 32px padding: its title at 30px on up to two lines, leading 1.1; an excerpt of two lines at 16px; and along the bottom edge the date on the left and a text link to read it on the right, both at 16px. As the page scrolls, each step slides the next card in from the right edge and squeezes the earlier ones into slivers 120px wide stacked edge to edge at the left, like book spines, where only the first letters of their titles show, clipped by the sliver. Clicking a sliver brings its card back. 48px under the band, the number of entries and a link to the full list sit at 17px on the left margin, so the stage does not end on an empty floor.",
+            "mobile": "No pin and no slivers. The cards stack at full width with 12px gaps, each in its tone, the title at 24px, the excerpt at 16px, the date and link at the foot. The heading sits above them at 10vw.",
+            "seenIn": ["aww-noho"]
+        },
+        {
+            "id": "cta-blank-in-the-sentence",
+            "role": "cta",
+            "name": "A sentence with a blank",
+            "shape": "statement",
+            "tags": ["type-led", "ui-led"],
+            "directions": [
+                "sentence-as-layout",
+                "product-performs",
+                "type-only-statement",
+                "one-motif",
+                "colour-chapters"
+            ],
+            "needs": [],
+            "blueprint": "The closing sentence has a gap in it, and the gap is the form. A sentence of five to eight words is set at about 6vw on two lines, flush left across columns 1–11; there is no separate heading. Where the reader's email (or name, or city) belongs, an `<input>` sits inline on the baseline: a filled block of the one-step tone, exactly one line-height tall and about 7em wide, with the placeholder in the same face and size in the softer ink, no border, and the page's radius or motif corner. The sentence's last word is the submit `<button>`, set in the same type on a block of the accent colour of the same height. Field and button use `em` units so they scale with the sentence. One line at 16px under the sentence, in the softer ink, says what happens after sending. Nothing else is in the section.",
+            "mobile": "The sentence is set at 10vw on two lines; the input drops to a line of its own between them at full width and one line-height tall, and the final word, as the button, ends the second line. The explaining line follows at 15px.",
+            "seenIn": ["opl-shelf"]
+        },
+        {
+            "id": "footer-mark-built-from-shapes",
+            "role": "footer",
+            "name": "The mark, built large",
+            "shape": "band",
+            "tags": ["colour-field", "object-led"],
+            "directions": [
+                "one-motif",
+                "specimen-catalogue",
+                "colour-chapters",
+                "loud-flat-poster",
+                "dense-tiles",
+                "borrowed-category"
+            ],
+            "needs": [],
+            "blueprint": "On a flat colour field, the brand closes the page as a construction rather than as set type. Across the full content width and about 34svh tall, the wordmark is built from blocks: each letter is knocked out of its own solid rectangle in a palette colour, the rectangles differ in height (60–100% of the band) and butt together with 4px gaps, bottoms on one line. Where the project has a simple geometric mark or motif, enlarge that instead, drawn as inline SVG from flat rectangles, circles and quarter-arcs with the same 4px gaps. Below, 56px lower: four columns of plain links at 15px across columns 1–8, and two addresses or contact lines in columns 9–12. A last row carries the copyright at the left and one small filled button at the right. Space and the block construction do all the separating.",
+            "mobile": "The block wordmark spans the full width at about 22svh tall; a long name breaks into two rows of blocks. Link columns go two across at 15px, contact lines beneath at full width, then copyright and the small button on one row.",
+            "seenIn": [
+                "aww-house-of-honey-1",
+                "opl-woblo",
+                "aww-2xa-studio",
+                "opl-uglycash"
+            ]
+        }
+    ],
+    "references": [
+        {
+            "id": "opl-tara",
+            "name": "Tara",
+            "url": "https://tara.com",
+            "source": "One Page Love",
+            "kind": "finance",
+            "score": 7.2,
+            "idea": "Two pastel circles, mint for saving and pink for spending, stand for the app's two accounts and recur as icon, inline dot, section colour and card gradient.",
+            "mood": ["friendly", "clean", "pastel", "confident"],
+            "archetype": "split-text-media",
+            "hero": "Off-white field with no navigation, only a small bold wordmark top-left. The left column is vertically centred and starts about 8% in: a two-line headline in a wide heavy grotesk at roughly 6vw with tight leading, a grey one-line subhead beneath, then a pill-shaped email field about 400px wide with a black pill button nested inside its right end. The right half holds a 3D pair floating on the page colour: a mint-to-pink gradient bank card tilted about 30 degrees, overlapping a perspective-tilted phone showing a balance screen. Two small award badges are stacked on the right edge. Roughly half the viewport is empty.",
+            "type": "Herokid Wide at weight 600 with -0.04em tracking for headlines, regular-width Herokid for everything else. Sentence case in the hero, all-caps for the scroll statements. Roughly 86px headline against 14px body, with a mid size of about 24px for centred explainer lines.",
+            "colour": "#f8f8f8 #0a0a0a #c3edce #f8c7c9 #ffffff — Near-white base with black type. Mint and pink appear only as the two account colours: first as small circles, then as full-screen section fields and a soft glow behind the footer wordmark.",
+            "imagery": "3D bank card and tilted phone mock-ups carrying app screens, floating without a container on the page colour; later a straight-on phone on a flat mint field. Simple line icons inside solid pastel circles.",
+            "layout": "Twenty screens of scroll but very little per screen: one centred object or statement per viewport with large empty margins. A wordmark top-left and a tiny pill button top-right persist. Full-bleed pastel fields mark the two product chapters; a row of four white cards closes.",
+            "sections": [
+                {
+                    "role": "intro",
+                    "description": "A pinned, nearly empty viewport where a single mint circle holding a line icon sits upper-centre with a pink circle peeking from behind it. On scroll the pink circle slides out to sit beside the mint one, overlapping slightly, each with its own icon, and three centred lines of roughly 24px text appear beneath explaining the two accounts. Nothing else is on screen."
+                },
+                {
+                    "role": "other",
+                    "description": "A chapter-title screen: two words of heavy uppercase at about 5vw, centred and stacked on two lines, with a mint dot the height of the capitals sitting inline after the first word like punctuation. The dot is the same circle from the previous scene, so the colour carries its meaning straight into the full-mint section that follows."
+                },
+                {
+                    "role": "showcase",
+                    "description": "Full-viewport mint field. A small eyebrow and a bold product name are centred near the top. Below, a straight-on phone mock-up stands just right of centre, and a short right-aligned bold claim with two lines of small text sits to its left, level with the phone's lower third. Text and phone hug the centre line, leaving both outer thirds empty."
+                },
+                {
+                    "role": "footer",
+                    "description": "After four white rounded cards and a repeated centred email pill, the footer is one row of small links and then the wordmark set enormous, around 45vw wide and cropped by the bottom edge. It is white on the off-white page and becomes visible only through blurred pink and mint glows placed behind the letters."
+                }
+            ],
+            "steal": [
+                "Assign each product concept a colour and a shape early (two pastel circles), then reuse it as bullet, inline punctuation dot and full section background.",
+                "Nest the call-to-action button inside the email field's pill so the form reads as one object.",
+                "Set the footer wordmark in the page's own background colour and reveal it only with soft coloured glows behind the letters."
+            ]
+        },
+        {
+            "id": "opl-billow",
+            "name": "Billow",
+            "url": "https://www.billow.so",
+            "source": "One Page Love",
+            "kind": "saas",
+            "score": 6.9,
+            "idea": "A conventional product page softened by a cloud motif: the logo's cloud silhouette is blown up and blurred into a blue stage for the app.",
+            "mood": ["soft", "clean", "reassuring", "bright"],
+            "archetype": "centred-statement-media-below",
+            "hero": "Centred stack on near-white. Nav inside a 1230px container: cloud logo left, four links centred, outline Log in and navy pill right. A small outlined pill badge, then a two-line title-case serif headline at 6.4vw with -0.05em tracking in deep navy, a three-line 18px paragraph whose opening phrase sits on a pale-blue highlighter block, a glossy blue gradient pill button and an 11px reassurance line. The bottom third is a huge blurred cobalt-to-cyan cloud silhouette, the logo enlarged to full width, with the top of a white app window rising from the fold and a handwritten note with a scribbled arrow at its right corner.",
+            "type": "Lastik, a high-contrast display serif, regular weight, title case, -0.05em tracking at 92px so letters nearly touch; reused at 28-40px for section and card titles. Open Runde, a rounded Inter variant, for body at 15-18px and all UI. About a 5x jump.",
+            "colour": "#fcfdff #0b1f33 #0077fe #eaf5fb #22c4ff #e5e8ea — White and very pale blue with deep navy text and one electric blue for the button and the cloud glow, which shades to cyan at its edges. Sections never change ground. Cool.",
+            "imagery": "Light-mode app screenshots, large, with edges and lower halves dissolving into the page; cropped UI fragments inside cards with one element sharpened and lifted. Soft cloud and sky washes behind sections.",
+            "layout": "1230px container, centred hero, then a repeating module of heading, short copy and a large faded screenshot. One three-card row. Soft blue cloud washes replace hard section breaks; about twelve screens.",
+            "sections": [
+                {
+                    "role": "how-it-works",
+                    "description": "Centred pill eyebrow and two-line serif heading, a short centred paragraph, then three equal cards (about 400px wide, 1px pale border, 12px radius, faint blue glow at the top). Each card's upper 55% is a cropped, softened fragment of product UI with one sharp element popped forward (a blue chip, a figure, a tooltip); below, a serif card title and three lines of centred grey text."
+                },
+                {
+                    "role": "features",
+                    "description": "Repeated feature row: a two-line serif heading at about 28px on the left whose second line is a paler slate-blue, a two-line paragraph on the right starting at the 55% mark, then a full-width app screenshot whose sides and lower part dissolve into the white page rather than sitting in a frame. Faint cloud texture drifts behind."
+                },
+                {
+                    "role": "cta",
+                    "description": "A three-column checklist of features with round blue tick bullets, unreleased items greyed and tagged with tiny chips, and a blue gradient pill button beneath, all over a soft photographic sky wash. The footer continues on the same wash with an app-icon tile and three link columns under serif headings."
+                }
+            ],
+            "steal": [
+                "Enlarge the logo silhouette to full width, blur it heavily, and use it as the coloured stage behind the product screenshot.",
+                "Mark the opening phrase of the sub-headline with a pale highlighter block instead of bolding it.",
+                "Let product screenshots dissolve into the page at their edges rather than boxing them in a browser frame."
+            ]
+        },
+        {
+            "id": "opl-archiv",
+            "name": "ARCHIV",
+            "url": "https://www.archiv.systems/",
+            "source": "One Page Love",
+            "kind": "consumer-app",
+            "score": 7.2,
+            "idea": "A waitlist page as a museum plinth: one cut-out everyday object at a time, centred on off-white beneath a heavy serif wordmark.",
+            "mood": ["restrained", "curatorial", "calm", "witty", "precise"],
+            "archetype": "product-object-centre",
+            "hero": "Off-white single screen with no scroll. A heavy high-contrast serif wordmark in black caps sits top-left at a 56px margin, about 410px wide (28% of the viewport) and 80px tall. Opposite, top-right at the same margin, one line of 14px sans description aligns with the wordmark's top. Dead centre, one photographed object (a painted wooden pepper mill about 140px wide and 440px tall) stands on a barely visible lighter rounded square with a soft contact shadow; other objects replace it in turn. Below, a centred 11px grey line, then a white rounded email field 236px wide with a circled arrow inside its right end. Roughly 80% is empty.",
+            "type": "The wordmark is drawn lettering in a heavy display serif with tight spacing, cap height about 5.5vw. All live text is Helvetica Neue regular at 14px and about 11px, black or grey. Two text sizes only; the contrast is wordmark against near-invisible interface text.",
+            "colour": "#f1efec #000000 #ffffff #d9261c #e8a317 #7a7a75 — Warm off-white field, black wordmark, a white input; all colour arrives through whichever object is showing (red and yellow mill, tan leather, blue cap).",
+            "imagery": "Studio cut-outs of single everyday objects in three-quarter view with a soft grounded shadow on matching off-white, each scaled to similar visual mass and centred, one at a time, no frame.",
+            "layout": "One fixed viewport with four elements: wordmark top-left, description top-right, object in the exact centre, form bottom-centre. Margins of 56px, no rules, nav or footer. On mobile the wordmark centres and the description disappears.",
+            "sections": [
+                {
+                    "role": "gallery",
+                    "description": "The central object rotates through unrelated things (pepper mill, sling chair, sticker-covered hydrant, layered iced drink, record player, baseball cap), each photographed in the same light and replaced in place within a zone roughly 250-300px square. Shadow direction and visual weight stay constant, so the object is the page's only variable and no carousel controls are needed."
+                },
+                {
+                    "role": "contact",
+                    "description": "Beneath the object, a centred line of 11px grey text, a 30px gap, then a white field about 236 by 52px with 12px radius: light grey placeholder at left and a 26px circle-outlined arrow as the submit control inside the right end. No button label, border or shadow; the field is the only pure white on the page, which marks it as the one interactive thing."
+                }
+            ],
+            "steal": [
+                "Build a pre-launch page from four elements only (wordmark top-left, one-line description top-right, a single centred object, an email field) and leave the rest of the screen empty.",
+                "Cycle one consistently lit cut-out object in the same spot to show range without adding a grid or carousel controls.",
+                "Make the email field the only pure-white element on an off-white page, with submit as a circled arrow inside it rather than a labelled button."
+            ]
+        }
+    ],
+    "scenes": []
+}
