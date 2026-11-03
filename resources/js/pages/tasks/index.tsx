@@ -41,7 +41,15 @@ type Filters = {
     sort: TaskSort | null;
 };
 
-type PageProps = { tasks: Task[]; filters: Filters };
+type PaginatedTasks = {
+    data: Task[];
+    current_page: number;
+    last_page: number;
+    prev_page_url: string | null;
+    next_page_url: string | null;
+};
+
+type PageProps = { tasks: PaginatedTasks; filters: Filters };
 
 const statusFilters: { label: string; value: TaskStatus | null }[] = [
     { label: 'All', value: null },
@@ -145,9 +153,14 @@ function TaskRow({ task }: { task: Task }) {
 
         router
             .optimistic<PageProps>((props) => ({
-                tasks: props.tasks.map((current) =>
-                    current.id === task.id ? { ...current, status } : current,
-                ),
+                tasks: {
+                    ...props.tasks,
+                    data: props.tasks.data.map((current) =>
+                        current.id === task.id
+                            ? { ...current, status }
+                            : current,
+                    ),
+                },
             }))
             .patch(
                 TaskController.update.url(task.id),
@@ -242,6 +255,34 @@ function TaskRow({ task }: { task: Task }) {
                 />
             </div>
         </li>
+    );
+}
+
+function PageLink({ href, label }: { href: string | null; label: string }) {
+    if (href === null) {
+        return (
+            <Button
+                size="sm"
+                variant="outline"
+                disabled
+                className={glassButtonOutline}
+            >
+                {label}
+            </Button>
+        );
+    }
+
+    return (
+        <Button
+            asChild
+            size="sm"
+            variant="outline"
+            className={glassButtonOutline}
+        >
+            <Link href={href} preserveScroll>
+                {label}
+            </Link>
+        </Button>
     );
 }
 
@@ -399,7 +440,7 @@ export default function TasksIndex({ tasks, filters }: PageProps) {
                     </p>
                 )}
 
-                {tasks.length === 0 ? (
+                {tasks.data.length === 0 ? (
                     <p
                         className={cn(
                             'p-8 text-center text-sm',
@@ -416,10 +457,23 @@ export default function TasksIndex({ tasks, filters }: PageProps) {
                             glassCard,
                         )}
                     >
-                        {tasks.map((task) => (
+                        {tasks.data.map((task) => (
                             <TaskRow key={task.id} task={task} />
                         ))}
                     </ul>
+                )}
+
+                {tasks.last_page > 1 && (
+                    <nav
+                        aria-label="Task pages"
+                        className="flex items-center justify-between gap-3"
+                    >
+                        <PageLink href={tasks.prev_page_url} label="Previous" />
+                        <span className={cn('text-sm', glassMuted)}>
+                            Page {tasks.current_page} of {tasks.last_page}
+                        </span>
+                        <PageLink href={tasks.next_page_url} label="Next" />
+                    </nav>
                 )}
             </div>
         </>

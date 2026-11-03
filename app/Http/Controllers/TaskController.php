@@ -16,9 +16,10 @@ use Inertia\Response;
 class TaskController extends Controller
 {
     /**
-     * Show the user's tasks, optionally searched by title, filtered by status and sorted by priority or due date.
+     * Show a page of the user's tasks, optionally searched by title, filtered by status and sorted by priority or due date.
+     * A page left empty, such as by deleting its last task, redirects to the new last page.
      */
-    public function index(Request $request): Response
+    public function index(Request $request): Response|RedirectResponse
     {
         $filters = $request->validate([
             'search' => ['nullable', 'string', 'max:255'],
@@ -36,7 +37,12 @@ class TaskController extends Controller
             ->when($sort === 'priority', fn ($query) => $query->orderByRaw("case priority when 'high' then 0 when 'medium' then 1 else 2 end"))
             ->when($sort === 'due_date', fn ($query) => $query->orderByRaw('due_date is null')->orderBy('due_date'))
             ->latest('id')
-            ->get();
+            ->paginate()
+            ->withQueryString();
+
+        if ($tasks->isEmpty() && ! $tasks->onFirstPage()) {
+            return redirect($tasks->url($tasks->lastPage()));
+        }
 
         return Inertia::render('tasks/index', [
             'tasks' => $tasks,

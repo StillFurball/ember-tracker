@@ -21,8 +21,8 @@ describe('index', function () {
             ->get(route('tasks.index'))
             ->assertInertia(fn (Assert $page) => $page
                 ->component('tasks/index')
-                ->has('tasks', 1)
-                ->where('tasks.0.id', $ownTask->id));
+                ->has('tasks.data', 1)
+                ->where('tasks.data.0.id', $ownTask->id));
     });
 
     test('tasks can be filtered by status', function () {
@@ -33,8 +33,8 @@ describe('index', function () {
         $this->actingAs($user)
             ->get(route('tasks.index', ['status' => 'completed']))
             ->assertInertia(fn (Assert $page) => $page
-                ->has('tasks', 1)
-                ->where('tasks.0.id', $completedTask->id)
+                ->has('tasks.data', 1)
+                ->where('tasks.data.0.id', $completedTask->id)
                 ->where('filters.status', 'completed'));
     });
 
@@ -47,9 +47,9 @@ describe('index', function () {
         $this->actingAs($user)
             ->get(route('tasks.index', ['sort' => 'priority']))
             ->assertInertia(fn (Assert $page) => $page
-                ->where('tasks.0.title', 'High')
-                ->where('tasks.1.title', 'Medium')
-                ->where('tasks.2.title', 'Low'));
+                ->where('tasks.data.0.title', 'High')
+                ->where('tasks.data.1.title', 'Medium')
+                ->where('tasks.data.2.title', 'Low'));
     });
 
     test('tasks can be sorted by due date with undated tasks last', function () {
@@ -61,10 +61,10 @@ describe('index', function () {
         $this->actingAs($user)
             ->get(route('tasks.index', ['sort' => 'due_date']))
             ->assertInertia(fn (Assert $page) => $page
-                ->where('tasks.0.title', 'Sooner')
-                ->where('tasks.0.due_date', '2026-12-01')
-                ->where('tasks.1.title', 'Later')
-                ->where('tasks.2.title', 'Undated'));
+                ->where('tasks.data.0.title', 'Sooner')
+                ->where('tasks.data.0.due_date', '2026-12-01')
+                ->where('tasks.data.1.title', 'Later')
+                ->where('tasks.data.2.title', 'Undated'));
     });
 
     test('tasks can be searched by title', function () {
@@ -76,9 +76,36 @@ describe('index', function () {
         $this->actingAs($user)
             ->get(route('tasks.index', ['search' => 'report']))
             ->assertInertia(fn (Assert $page) => $page
-                ->has('tasks', 1)
-                ->where('tasks.0.id', $match->id)
+                ->has('tasks.data', 1)
+                ->where('tasks.data.0.id', $match->id)
                 ->where('filters.search', 'report'));
+    });
+
+    test('tasks are split into pages whose links keep the active filters', function () {
+        $user = User::factory()->create();
+        $tasks = Task::factory()->count(16)->completed()->for($user)->create();
+
+        $this->actingAs($user)
+            ->get(route('tasks.index', ['status' => 'completed']))
+            ->assertInertia(fn (Assert $page) => $page
+                ->has('tasks.data', 15)
+                ->where('tasks.last_page', 2)
+                ->where('tasks.next_page_url', route('tasks.index', ['status' => 'completed', 'page' => 2])));
+
+        $this->actingAs($user)
+            ->get(route('tasks.index', ['status' => 'completed', 'page' => 2]))
+            ->assertInertia(fn (Assert $page) => $page
+                ->has('tasks.data', 1)
+                ->where('tasks.data.0.id', $tasks->first()->id));
+    });
+
+    test('a page past the end redirects to the last page and keeps the active filters', function () {
+        $user = User::factory()->create();
+        Task::factory()->count(16)->completed()->for($user)->create();
+
+        $this->actingAs($user)
+            ->get(route('tasks.index', ['status' => 'completed', 'page' => 3]))
+            ->assertRedirect(route('tasks.index', ['status' => 'completed', 'page' => 2]));
     });
 
     test('an unknown sort option is rejected', function () {
